@@ -15,15 +15,25 @@ class PotentialUser(PotentialUserBase):
     class Config:
         orm_mode = True
 
-class LicenseBase(BaseModel):
+class DatasetBase(BaseModel):
     name: str
+    source: str
     url: str
+    capture_time: datetime.date
+    epsg_code: int
+    extent_xmin: str
+    extent_xmax: str
+    extent_ymin: str
+    extent_ymax: str
+    can_download: bool
 
-class LicenseCreate(LicenseBase):
+class DatasetCreate(DatasetBase):
     pass
 
-class License(LicenseBase):
+class Dataset(DatasetBase):
     id: int
+    license_id: int
+    layer_type_id: int
     
     class Config:
         orm_mode = True
@@ -40,25 +50,15 @@ class LayerType(LayerTypeBase):
     class Config:
         orm_mode = True
 
-class DatasetBase(BaseModel):
+class LicenseBase(BaseModel):
     name: str
-    source: str
     url: str
-    capture_time: datetime.date
-    epsg_code: int
-    xmin: float
-    xmax: float
-    ymin: float
-    ymax: float
-    can_download: bool
 
-class DatasetCreate(DatasetBase):
+class LicenseCreate(LicenseBase):
     pass
 
-class Dataset(DatasetBase):
+class License(LicenseBase):
     id: int
-    license_id = int
-    layer_type_id = int
-    
+
     class Config:
         orm_mode = True

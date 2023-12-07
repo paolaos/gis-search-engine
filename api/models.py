@@ -1,4 +1,4 @@
-from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date, Float
+from sqlalchemy import Boolean, Column, ForeignKey, Integer, String, Date
 from sqlalchemy.orm import relationship
 
 from .database import Base
@@ -16,15 +16,13 @@ class License(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
     url = Column(String, index=False)
-
-    dataset = relationship("Dataset", back_populates="license")
+    datasets = relationship("Dataset", back_populates="license")
 
 class LayerType(Base):
     __tablename__ = "layer_types"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, index=True)
-
-    dataset = relationship("Dataset", back_populates="layer_type")
+    datasets = relationship("Dataset", back_populates="layer_type")
 
 # class FieldType(Base):
 #     __tablename__ = "field_types"
@@ -58,10 +56,10 @@ class Dataset(Base):
     url = Column(String, index=True)
     capture_time = Column(Date, index=True)
     epsg_code = Column(Integer, index=True)
-    extent_xmin = Column(Float, index=False)
-    extent_xmax = Column(Float, index=False)
-    extent_ymin = Column(Float, index=False)
-    extent_ymax = Column(Float, index=False)
+    extent_xmin = Column(String, index=False)
+    extent_xmax = Column(String, index=False)
+    extent_ymin = Column(String, index=False)
+    extent_ymax = Column(String, index=False)
     can_download = Column(Boolean, index=False)
 
     license_id = Column(Integer, ForeignKey("licenses.id"))

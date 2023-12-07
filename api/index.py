@@ -18,8 +18,32 @@ def get_db():
 
 @app.get("/api/python")
 def hello_world():
-    return {"message": "Hello World"}        
+    return {"message": "Hello World"}
 
+@app.get("/api/datasets/", response_model=list[schemas.Dataset])
+def read_datasets(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    datasets = crud.get_datasets(db, skip=skip, limit=limit)
+    return datasets
+
+@app.post("/api/license/", response_model=schemas.License)
+def create_license(license: schemas.LicenseCreate, db: Session = Depends(get_db)):
+    print("here")
+    return crud.create_license(db=db, license=license)
+
+@app.post("/api/potential_user/", response_model=schemas.PotentialUser)
+def create_potential_user(potential_user: schemas.PotentialUserCreate, db: Session = Depends(get_db)):
+    db_user = crud.get_potential_user_by_email(db, email=potential_user.email)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Email already registered")
+    return crud.create_potential_user(db=db, potential_user=potential_user)
+
+@app.post("/api/layer_type/", response_model=schemas.LayerType)
+def create_layer_type(layer_type: schemas.LayerTypeCreate, db: Session = Depends(get_db)):
+    return crud.create_layer_type(db=db, layer_type=layer_type)
+
+@app.post("/api/dataset/", response_model=schemas.Dataset)
+def create_dataset(dataset: schemas.DatasetCreate, db: Session = Depends(get_db)):
+    return crud.create_dataset(db=db, dataset=dataset)
 
 # @app.post("/users/", response_model=schemas.User)
 # def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
