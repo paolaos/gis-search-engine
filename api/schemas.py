@@ -32,8 +32,8 @@ class DatasetCreate(DatasetBase):
 
 class Dataset(DatasetBase):
     id: int
-    license_id: int
-    layer_type_id: int
+    license_id = int
+    layer_type_id = int
     
     class Config:
         orm_mode = True
