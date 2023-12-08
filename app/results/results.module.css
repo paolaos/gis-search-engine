@@ -1,0 +1,151 @@
+.pageLayout {
+    display: flex;
+    font-family: 'Roboto', sans-serif;
+}
+
+.sidebar {
+    width: 250px;
+    border-right: 1px solid #ddd;
+    /* Additional styles for your sidebar */
+}
+
+.mainContent {
+    flex-grow: 1;
+    padding: 20px;
+    /* Styles for your main content */
+}
+
+.datasetCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 10px;
+    /* Additional styles for dataset cards */
+}
+
+.datasetName {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.logo {
+    height: 70px; /* Adjust the size as needed */
+}
+
+.searchForm {
+    display: flex;
+}
+
+.searchInput {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.searchButton {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.searchButton:hover {
+    background-color: #0056b3;
+}
+
+.filterSection {
+    margin-bottom: 20px;
+}
+
+.filterSection label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.filterSection select {
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures footer stays at the bottom for short content */
+}
+
+.datasetCard {
+    /* ...existing styles... */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.downloadButton {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.downloadButton:hover {
+    background-color: #0056b3;
+}
+
+.footer {
+    margin-top: auto; /* Pushes the footer to the bottom */
+    background-color: #f5f5f5; /* Background color for the footer */
+    border-top: 1px solid #ddd; /* Border at the top of the footer */
+    text-align: center; /* Center-align text in the footer */
+}
+
+.footerContent {
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    align-items: center; /* Center-align the children */
+    padding: 20px; /* Padding inside the footer */
+}
+
+.subscriptionForm {
+    margin-bottom: 20px; /* Add space between the form and the notice */
+    text-align: center;
+}
+
+.subscriptionInput {
+    padding: 8px 12px;
+    margin-right: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.subscriptionButton {
+    padding: 8px 12px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.subscriptionButton:hover {
+    background-color: #218838;
+}
+
+.footerNotice {
+    /* Additional styling as needed */
+    max-width: 80%; /* Limit the width of the notice text */
+    margin: auto; /* Center the notice text */
+}

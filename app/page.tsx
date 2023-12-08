@@ -1,29 +1,31 @@
-'use client';
-import { Card, Title, Text, Metric, Bold } from '@tremor/react';
-import React, { useState, useEffect } from 'react';
+// pages/index.js
+import Head from 'next/head';
+import styles from './index.module.css';
 
 export default function Home() {
-  const [datasets, setDatasets] = useState([]);
-
-  useEffect(() => {
-    fetch('http://127.0.0.1:8000/api/datasets/')
-      .then(response => response.json())
-      .then(data => setDatasets(data))
-      .then(response => console.log(response))
-      .catch(error => console.error('Error fetching data:', error));
-  }, []);
   return (
-    <main className="p-4 md:p-10 mx-auto max-w-7xl">
-    <Metric>Datasets</Metric>
-    {datasets.map(dataset => (
-      <Card>
-        <Title>{dataset.name}</Title>
-        <Text><Bold>Source: </Bold><a href={dataset.source} target="_blank">{dataset.source}</a></Text>
-        <Text><Bold>URL: </Bold><a href={dataset.url} target="_blank">{dataset.url}</a></Text>
-        <Text><Bold>Capture Time: </Bold>{dataset.capture_time}</Text>
-        <Text><Bold>EPSG Code: </Bold>{dataset.epsg_code}</Text>
-      </Card>
-        ))}
-  </main>
-  );
+    <div className={styles.container}>
+      <Head>
+        <title>GIS Data Search Engine</title>
+        <meta name="description" content="Search for GIS datasets" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <header className={styles.header}>
+        <div className={styles.logoContainer}>
+          <img src="/logo.png" alt="GIS Data Search Engine Logo" className={styles.logo} />
+        </div>
+        <h1 className={styles.welcomeMessage}>Welcome to the GIS Data Search Engine</h1>
+      </header>
+
+      <main className={styles.main}>
+        <input type="text" placeholder="Search datasets..." className={styles.searchBar}/>
+        <button className={styles.searchButton}>Search</button>
+      </main>
+
+      <footer className={styles.footer}>
+        The user agrees to respect the licenses of the datasets provided in the search results.
+      </footer>
+    </div>
+  )
 }
